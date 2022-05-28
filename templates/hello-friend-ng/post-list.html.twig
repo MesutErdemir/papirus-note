@@ -1,0 +1,49 @@
+{% extends 'hello-friend-ng/_layout/base.html.twig' %}
+
+{% block body_content %}
+<main class="posts">
+    <h1>Posts</h1>
+
+    {% for groupYear,posts in papirusPosts.posts %}
+        <div class="posts-group">
+            <div class="post-year">{{ groupYear }}</div>
+            <ul class="posts-list">
+            {% for post in posts %}
+                <li class="post-item">
+                <a href="{{ url('papirus_post', {slug: post.slug}) }}">
+                    <span class="post-title">{{ post.headers.title }}</span>
+                    <span class="post-day">{{ post.headers.date|date('Y-m-d') }}</span>
+                </a>
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+
+    {% if papirusPosts.totalPages > 1 %}
+    <div class="pagination">
+        <div class="pagination__buttons">
+        {% if papirusPosts.currentPage > 1 %}
+            <span class="button previous">
+                <a href="{{ path('papirus_posts', {page: papirusPosts.currentPage-1 < 1 ? 1 : papirusPosts.currentPage-1}) }}">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Newer posts</span>
+                </a>
+            </span>
+        {% endif %}
+        
+        {% if papirusPosts.currentPage != papirusPosts.totalPages %}
+            <span class="button next">
+                <a href="{{ path('papirus_posts', {page: papirusPosts.currentPage+1 <= papirusPosts.totalPages ? papirusPosts.currentPage+1 : papirusPosts.currentPage}) }}">
+                    <span class="button__text">Older posts</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+        {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+</main>
+
+{% endblock %}

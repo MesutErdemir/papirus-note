@@ -1,0 +1,12 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    globals:
+        papirusAuthor: 'Author Name'
+        papirusDescription: 'Description'
+        papirusKeywords: 'Keywords'
+        papirusSiteName: 'Site Name'
+        papirusSiteDescription: 'Site Name Description'
+
+when@test:
+    twig:
+        strict_variables: true

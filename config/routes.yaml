@@ -1,0 +1,19 @@
+papirus_posts:
+    path: /posts/{page}
+    controller: App\Controller\PostsController::index
+    requirements:
+        page: '\d+'
+    defaults:
+        page: 1
+
+papirus_post:
+    path: /post/{slug}
+    controller: App\Controller\PostController::index
+    defaults:
+        slug: ~
+
+papirus_page:
+    path: /{slug}
+    controller: App\Controller\PageController::index
+    defaults:
+        slug: ~

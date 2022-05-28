@@ -1,0 +1,18 @@
+{% extends 'hello-friend-ng/_layout/base.html.twig' %}
+
+{% block body_content %}
+<main class="post">
+    <article>
+        <h2 class="post-title"><a href="{{ url('papirus_page', {slug: papirusPage.slug}) }}">{{ papirusPage.headers.title }}</a></h2>
+
+        <div class="post-content">
+            {{ papirusPage.body|raw }}
+        </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info"></div>
+</main>
+
+{% endblock %}
